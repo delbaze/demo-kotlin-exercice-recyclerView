@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 resources.getIdentifier(
                     "blade_runner",
                     "drawable",
-                    getApplicationContext().getPackageName()
+                    applicationContext.packageName
                 )
             ),
             Movie(
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                 resources.getIdentifier(
                     "the_batman",
                     "drawable",
-                    getApplicationContext().getPackageName()
+                    applicationContext.packageName
                 )
             ),
             Movie(
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                 resources.getIdentifier(
                     "her",
                     "drawable",
-                    getApplicationContext().getPackageName()
+                    applicationContext.packageName
                 )
             ),
             Movie(
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                 resources.getIdentifier(
                     "die_hard",
                     "drawable",
-                    getApplicationContext().getPackageName()
+                    applicationContext.packageName
                 )
             ),
             Movie(
