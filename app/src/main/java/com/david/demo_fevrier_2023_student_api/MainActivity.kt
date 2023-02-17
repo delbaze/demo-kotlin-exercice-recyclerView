@@ -2,13 +2,10 @@ package com.david.demo_fevrier_2023_student_api
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Adapter
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.david.demo_fevrier_2023_student_api.dataclasses.Movie
+import com.david.demo_fevrier_2023_student_api.enums.MovieType
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,11 +13,16 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_main)
         setContentView(R.layout.activity_main_recycler)
         //RECYCLER VIEW
+        title= getString(R.string.list_title)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setIcon(R.drawable.movies)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
+
 
         val recyclerList: RecyclerView = findViewById(R.id.recyclerList)
 
         recyclerList.layoutManager = LinearLayoutManager(this)
-        recyclerList.adapter = CategoryAdapter(generateCategoryList())
+        recyclerList.adapter = MovieAdapter(generateMovieList())
 
         //LIST VIEW =>
 
@@ -47,6 +49,71 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun generateMovieList(): ArrayList<Movie> {
+        return arrayOf(
+            Movie(
+                1,
+                "Blade Runner 2049",
+                2017,
+                MovieType.SCIFI,
+                163,
+                resources.getIdentifier(
+                    "blade_runner",
+                    "drawable",
+                    getApplicationContext().getPackageName()
+                )
+            ),
+            Movie(
+                2,
+                "The Batman",
+                2022,
+                MovieType.POLICIER,
+                175,
+                resources.getIdentifier(
+                    "the_batman",
+                    "drawable",
+                    getApplicationContext().getPackageName()
+                )
+            ),
+            Movie(
+                3,
+                "Her",
+                2014,
+                MovieType.ROMANTIQUE,
+                126,
+                resources.getIdentifier(
+                    "her",
+                    "drawable",
+                    getApplicationContext().getPackageName()
+                )
+            ),
+            Movie(
+                4,
+                "Die Hard",
+                1988,
+                MovieType.ACTION,
+                131,
+                resources.getIdentifier(
+                    "die_hard",
+                    "drawable",
+                    getApplicationContext().getPackageName()
+                )
+            ),
+            Movie(
+                5,
+                "Aliens",
+                1986,
+                MovieType.THRILLER,
+                137,
+                resources.getIdentifier(
+                    "aliens",
+                    "drawable",
+                    getApplicationContext().getPackageName()
+                )
+            ),
+        ).toCollection(ArrayList())
+    }
+
     private fun generateCategoryList(): ArrayList<Category> {
         val cat1 = Category("1", "Javascript", selected = false)
         val cat2 = Category("2", "Java", selected = false)
@@ -54,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         val cat4 = Category("4", "Typescript", selected = false)
         val cat5 = Category("5", "PHP", selected = false)
 
-        val categoryList : ArrayList<Category> = ArrayList()
+        val categoryList: ArrayList<Category> = ArrayList()
 
         categoryList.add(cat1)
         categoryList.add(cat2)
@@ -63,6 +130,6 @@ class MainActivity : AppCompatActivity() {
         categoryList.add(cat5)
 
 
-    return categoryList
+        return categoryList
     }
 }
